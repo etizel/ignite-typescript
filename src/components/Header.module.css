@@ -1,0 +1,30 @@
+.header {
+  background-color: var(--gray-800);
+  display: flex;
+  justify-content: center;
+  height: 80px;
+  padding: 1.25rem 0;
+}
+.rotateLogo {
+  animation: rotateLogo 2s ease infinite;
+}
+
+
+.header img {
+  height: 2rem;
+  transition: transform 0.3s ease;
+  animation: swingLogo 3s ease-in-out infinite;
+  cursor: pointer;
+}
+
+.header img:hover {
+  animation: rotateLogo 3s ease infinite;
+}
+@keyframes rotateLogo {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(350deg);
+  }
+}
