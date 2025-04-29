@@ -3,6 +3,7 @@ import { Post } from './components/Post.js';
 import { Sidebar } from './components/Sidebar.js';
 import styles from './App.module.css';
 import './global.css';
+import { ptBR }
 // author: {avatarUrl, name:"" , role:""}
 // publishedAt: Date
 // content: string

@@ -1,12 +1,24 @@
-import { format, formatDistanceToNow } from 'date-fns';
-import ptBR from 'date-fns/locale/pt-BR';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale/pt-BR';
 
 import styles from './Post.module.css';
 import { Comment } from './Comment';
 import { Avatar } from './Avatar';
 import { useState } from 'react';
 
-export function Post({ author, publishedAt, content }) {
+interface Author {
+  name: string;
+  role: string;
+  avatarUrl: string;
+}
+
+interface PropsOfObject {
+  author: Author;
+  publishedAt: string;
+  content: string;
+}
+
+export function Post({ author, publishedAt, content }: PropsOfObject) {
   const [comments, setComments] = useState(['Post muito bacana']);
 
   const [newCommentText, setNewCommentText] = useState('');
