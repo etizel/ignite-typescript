@@ -3,7 +3,7 @@ import { Post } from './components/Post.js';
 import { Sidebar } from './components/Sidebar.js';
 import styles from './App.module.css';
 import './global.css';
-import { ptBR }
+
 // author: {avatarUrl, name:"" , role:""}
 // publishedAt: Date
 // content: string
@@ -32,14 +32,14 @@ const posts = [
     author: {
       avatarUrl: 'https://xsgames.co/randomusers/assets/avatars/male/21.jpg',
       name: 'Franklin Nunes',
-      role: 'CTO',
+      role: 'CTO RocketUniversal',
     },
     content: [
-      { type: 'paragraph', content: 'Falaaa Galera!' },
+      { type: 'paragraph', content: 'Eaaai Pessoal!' },
       {
         type: 'paragraph',
         content:
-          'Intusiastas da música e tech lovers, É com grande satisfação que anuncio a adição mais recente ao meu portfólio de desenvolvimento: uma experiência musical imersiva inspirada na interface do Spotify.',
+          '🎬 Cinéfilos e entusiastas do design, é com grande entusiasmo que compartilho a mais recente adição ao meu portfólio de desenvolvimento: uma experiência cinematográfica imersiva inspirada na interface da Netflix.',
       },
       { type: 'link', content: '👉 etizel.com', href: 'etizel.com' },
     ],

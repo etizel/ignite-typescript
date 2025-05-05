@@ -1,10 +1,10 @@
-import { format } from 'date-fns';
+import { format, formatDistanceToNow } from 'date-fns';
 import { ptBR } from 'date-fns/locale/pt-BR';
 
 import styles from './Post.module.css';
 import { Comment } from './Comment';
 import { Avatar } from './Avatar';
-import { useState } from 'react';
+import { useState, FormEvent, ChangeEvent, InvalidEvent } from 'react';
 
 interface Author {
   name: string;
@@ -12,10 +12,15 @@ interface Author {
   avatarUrl: string;
 }
 
+interface Content {
+  type: 'paragraph' | 'link';
+  content: string;
+}
+
 interface PropsOfObject {
   author: Author;
-  publishedAt: string;
-  content: string;
+  publishedAt: Date;
+  content: Content[];
 }
 
 export function Post({ author, publishedAt, content }: PropsOfObject) {
@@ -32,19 +37,19 @@ export function Post({ author, publishedAt, content }: PropsOfObject) {
     addSuffix: true,
   });
 
-  function handleCreateNewComment(event) {
+  function handleCreateNewComment(event: FormEvent) {
     event.preventDefault();
 
     setComments([...comments, newCommentText]);
     setNewCommentText('');
   }
 
-  function handleNewCommentChange(event) {
+  function handleNewCommentChange(event: ChangeEvent<HTMLTextAreaElement>) {
     event.target.setCustomValidity('');
     setNewCommentText(event.target.value);
   }
 
-  function onDeleteComment(commentToDelete) {
+  function onDeleteComment(commentToDelete: string) {
     const commentWithoutDeleteOne = comments.filter((comment) => {
       return comment !== commentToDelete;
     });
@@ -54,7 +59,7 @@ export function Post({ author, publishedAt, content }: PropsOfObject) {
 
   const isNewCommentEmpty = newCommentText.length === 0;
 
-  function handleNewCommentInvalid(event) {
+  function handleNewCommentInvalid(event: InvalidEvent<HTMLTextAreaElement>) {
     event.target.setCustomValidity('Esse campo é obrigatório.');
   }
   return (
@@ -78,7 +83,7 @@ export function Post({ author, publishedAt, content }: PropsOfObject) {
             return <p key={line.content}>{line.content}</p>;
           } else if (line.type === 'link') {
             return (
-              <p key={line.contet}>
+              <p key={line.content}>
                 <a href="#">{line.content}</a>
               </p>
             );
